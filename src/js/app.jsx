@@ -15,7 +15,7 @@ class Calc extends React.Component {
     }
     handleClearClick = (e) => {
         this.setState({
-            display: '0',
+            display: 0,
             numberOne: 0,
             numberTwo: 2
         })
@@ -40,7 +40,6 @@ class Calc extends React.Component {
     }
     performResult = (e) => {
 		let result;
-		// this.state.numberOne = parseInt(this.state.display);
 		this.state.numberTwo = parseInt(this.state.display);
 
 		switch(this.state.operation) {
@@ -61,16 +60,17 @@ class Calc extends React.Component {
 			break;
 		}
 		console.log(result);
-
 		this.setState({
 			display: result
 		})
 	}
 
     negateValue = () => {
+
         this.setState({
-            display: (parseFloat(result) * -1).toString() })
-      }
+            display: this.state.display.charAt(0) === '-' ? this.state.display.substr(1) : '-' + this.state.display
+        })
+    }
 
     render(){
         return (
