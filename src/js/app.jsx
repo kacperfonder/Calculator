@@ -6,21 +6,21 @@ class Calc extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            display: 0,
+            display: '0',
             operation: '',
             numberOne: null,
             numberTwo: null,
-            result: 0
+            result: ''
         }
     }
     handleClearClick = (e) => {
         this.setState({
             display: '0',
             numberOne: 0,
-            numberTwo: 0
+            numberTwo: 2
         })
     }
-  
+
     handleOprClick = (e) => {
         if (!this.state.number1) {
             this.setState({
@@ -38,18 +38,39 @@ class Calc extends React.Component {
             })
         }
     }
-
     performResult = (e) => {
-        this.state.numberTwo = parseInt(this.state.display)
-        let result = 0;
-          if(this.state.operation === 'div') result = this.state.numberOne / this.state.numberTwo;
-          if(this.state.operation === 'multi') result = this.state.numberOne * this.state.numberTwo;
-          if(this.state.operation === 'add') result = this.state.numberOne + this.state.numberTwo;
-          if(this.state.operation === 'sub') result = this.state.numberOne - this.state.numberTwo;
-          this.setState({
-              display: result
-          })
-    }
+		let result;
+		// this.state.numberOne = parseInt(this.state.display);
+		this.state.numberTwo = parseInt(this.state.display);
+
+		switch(this.state.operation) {
+			case 'add':
+				result = this.state.numberOne + this.state.numberTwo;
+			break;
+
+			case 'div':
+				result = this.state.numberOne / this.state.numberTwo;
+			break;
+
+			case 'multi':
+				result = this.state.numberOne * this.state.numberTwo;
+			break;
+
+			case 'sub':
+				result = this.state.numberOne - this.state.numberTwo;
+			break;
+		}
+		console.log(result);
+
+		this.setState({
+			display: result
+		})
+	}
+
+    negateValue = () => {
+        this.setState({
+            display: (parseFloat(result) * -1).toString() })
+      }
 
     render(){
         return (
@@ -59,14 +80,7 @@ class Calc extends React.Component {
                         {this.state.display}
                     </div>
                     <div className='buttons'>
-                        <div className='operationBtns'>
-                            <button onClick={this.handleClearClick}>CE</button>
-                            <button onClick={this.handleOprClick} value={'div'}>&divide;</button>
-                            <button onClick={this.handleOprClick} value={'multi'}>*</button>
-                            <button onClick={this.handleOprClick} value={'add'}>+</button>
-                            <button onClick={this.handleOprClick} value={'sub'}>-</button>
-                        </div>
-                        <div className='numberBtns'>
+                    <div className='numberBtns'>
                             <button onClick={this.handleNrClick} value={'7'}>7</button>
                             <button onClick={this.handleNrClick} value={'8'}>8</button>
                             <button onClick={this.handleNrClick} value={'9'}>9</button>
@@ -78,8 +92,17 @@ class Calc extends React.Component {
                             <button onClick={this.handleNrClick} value={'3'}>3</button>
                             <button onClick={this.handleNrClick} value={'0'}>0</button>
                             <button onClick={this.handleNrClick} value={"."}>.</button>
-                            <button onClick={this.performResult} >=</button>
+                            <button onClick={this.performResult}>=</button>
+                            <button onClick={this.negateValue}>+/-</button>
                         </div>
+                        <div className='operationBtns'>
+                            <button onClick={this.handleClearClick}>CE</button>
+                            <button onClick={this.handleOprClick} value={'div'}>&divide;</button>
+                            <button onClick={this.handleOprClick} value={'multi'}>*</button>
+                            <button onClick={this.handleOprClick} value={'add'}>+</button>
+                            <button onClick={this.handleOprClick} value={'sub'}>-</button>
+                        </div>
+                       
                     </div>
                 </section>
             </section>
