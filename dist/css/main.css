@@ -26,36 +26,36 @@ body {
     height: 100px;
     border-radius: 10px 10px 0 0;
 }
-.numberBtns {
-    width: 75%;
-    display: flex;
-    color: #ffffff;
-    flex-wrap: wrap;
-  
-   } 
-.numberBtns > button {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    width: calc(100%/3);
+button {
     height: 90px;
     cursor: pointer;
-}
-.operationBtns {
-    display: flex;
-    flex-direction: column;
-    width: 25%
-}
-.operationBtns > button {
-    height: 90px;
-    width: 100%;
-
-}
-.buttons {
-    display: flex;
-    justify-content: space-between;
-}
-button {
+    padding: 0;
     font-size: 25px;
 }
+.buttons {
+    border-radius: 0 0 10px 10px;
+    display: flex;
+}
+.nrBtn {
+    flex-wrap: wrap;
+    display: flex;
+    width: 75%;
+}
+.nrBtn > button {
+    width: calc(100%/3);
+}
+.oprBtn {
+    display: flex;
+    flex-wrap: wrap;
+    width: 25%;
+}
+.oprBtn > button {
+    width: 100%
+}
+.zeroBtn {
+    width: 100%;
+    border-radius: 0 0 0 10px;
+}
+.equalBtn {
+    border-radius: 0 0 10px 0;
+} 

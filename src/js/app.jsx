@@ -74,37 +74,35 @@ class Calc extends React.Component {
    
     render(){
         return (
-            <section className='wrap'>
-                <section className='calcBody'>
-                    <div className='displayedNumbers'>
-                     {this.state.display}
-                    </div>
-                    <div className='buttons'>
-                    <div className='numberBtns'>
-                            <button onClick={this.negateValue}>+/-</button>
-                            <button onClick={this.handleNrClick} value={'7'}>7</button>
-                            <button onClick={this.handleNrClick} value={'8'}>8</button>
-                            <button onClick={this.handleNrClick} value={'9'}>9</button>
-                            <button onClick={this.handleNrClick} value={'4'}>4</button>
-                            <button onClick={this.handleNrClick} value={'5'}>5</button>
-                            <button onClick={this.handleNrClick} value={'6'}>6</button>
-                            <button onClick={this.handleNrClick} value={'1'}>1</button>
-                            <button onClick={this.handleNrClick} value={'2'}>2</button>
-                            <button onClick={this.handleNrClick} value={'3'}>3</button>
-                            <button onClick={this.handleNrClick} value={'0'}>0</button>
-                            <button onClick={this.handleNrClick} value={"."}>.</button>
-                            <button onClick={this.performResult}>=</button>
-                        </div>
-                        <div className='operationBtns'>
-                            <button onClick={this.handleClearClick}>CE</button>
-                            <button onClick={this.handleOprClick} value={'div'}>&divide;</button>
-                            <button onClick={this.handleOprClick} value={'multi'}>*</button>
-                            <button onClick={this.handleOprClick} value={'add'}>+</button>
-                            <button onClick={this.handleOprClick} value={'sub'}>-</button>
-                        </div>
-                       
-                    </div>
-                </section>
+            <section className='calcBody'>
+                <div className='displayedNumbers'>
+                    {this.state.display}
+                </div>
+                <div className='buttons'>
+                <div className='nrBtn'>
+                    <button onClick={this.handleClearClick}>CE</button>
+                    <button onClick={this.negateValue}>+/-</button>
+                    <button onClick={this.percenteValue}>%</button>
+                    <button onClick={this.handleNrClick} value={'7'}>7</button>
+                    <button onClick={this.handleNrClick} value={'8'}>8</button>
+                    <button onClick={this.handleNrClick} value={'9'}>9</button>
+                    <button onClick={this.handleNrClick} value={'4'}>4</button>
+                    <button onClick={this.handleNrClick} value={'5'}>5</button>
+                    <button onClick={this.handleNrClick} value={'6'}>6</button>
+                    <button onClick={this.handleNrClick} value={'1'}>1</button>
+                    <button onClick={this.handleNrClick} value={'2'}>2</button>
+                    <button onClick={this.handleNrClick} value={'3'}>3</button>
+                    <button onClick={this.handleNrClick} value={'0'} className='zeroBtn'>0</button>
+                    <button onClick={this.handleNrClick} value={"."}>.</button>
+                </div>  
+                <div className='oprBtn'>
+                    <button onClick={this.handleOprClick} value={'div'}>&divide;</button>
+                    <button onClick={this.handleOprClick} value={'multi'}>*</button>
+                    <button onClick={this.handleOprClick} value={'sub'}>-</button>
+                    <button onClick={this.handleOprClick} value={'add'}>+</button>
+                    <button onClick={this.performResult} className='equalBtn'>=</button>
+                </div>
+                </div>
             </section>
 	    )
     }
