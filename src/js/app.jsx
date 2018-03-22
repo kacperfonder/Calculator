@@ -66,21 +66,22 @@ class Calc extends React.Component {
 	}
 
     negateValue = () => {
-
+      
         this.setState({
-            display: this.state.display.charAt(0) === '-' ? this.state.display.substr(1) : '-' + this.state.display
+            display: this.state.display[0] === '-'  ? this.state.display.substr(1) : '-' + this.state.display
         })
     }
-
+   
     render(){
         return (
             <section className='wrap'>
                 <section className='calcBody'>
                     <div className='displayedNumbers'>
-                        {this.state.display}
+                     {this.state.display}
                     </div>
                     <div className='buttons'>
                     <div className='numberBtns'>
+                            <button onClick={this.negateValue}>+/-</button>
                             <button onClick={this.handleNrClick} value={'7'}>7</button>
                             <button onClick={this.handleNrClick} value={'8'}>8</button>
                             <button onClick={this.handleNrClick} value={'9'}>9</button>
@@ -93,7 +94,6 @@ class Calc extends React.Component {
                             <button onClick={this.handleNrClick} value={'0'}>0</button>
                             <button onClick={this.handleNrClick} value={"."}>.</button>
                             <button onClick={this.performResult}>=</button>
-                            <button onClick={this.negateValue}>+/-</button>
                         </div>
                         <div className='operationBtns'>
                             <button onClick={this.handleClearClick}>CE</button>
