@@ -27,12 +27,13 @@ class Calc extends React.Component {
     handleOprClick = (e) => {
         if (!this.state.number1) {
             this.setState({
-                numberOne: parseInt(this.state.display),
+                numberOne: parseFloat(this.state.display),
                 operation: e.target.value,
                 display: ''
             })
         }
     }
+  
 
     handleNrClick = (e) => {
         if(this.state.display.length <=15) {
@@ -43,7 +44,7 @@ class Calc extends React.Component {
     }
     performResult = (e) => {
 		let result;
-		this.state.numberTwo = parseInt(this.state.display);
+		this.state.numberTwo = parseFloat(this.state.display);
 
 		switch(this.state.operation) {
 			case '+':
@@ -63,7 +64,8 @@ class Calc extends React.Component {
 			break;
 		}
 		this.setState({
-			display: result
+            display: result,
+           
 		})
 	}
 
@@ -81,6 +83,7 @@ class Calc extends React.Component {
     render(){
         return (
             <section className='calcBody'>
+            
                 <div className='displayedNumbers'>
                 {/* {this.state.numberOne} {this.state.operation} {this.state.numberTwo}  */}
                 {this.state.display}
