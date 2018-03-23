@@ -36,9 +36,10 @@ class Calc extends React.Component {
   
 
     handleNrClick = (e) => {
-        if(this.state.display.length <=15) {
+        if(this.state.display.length <=5) {
             this.setState({
-                display: this.state.display.concat(e.target.value)
+                display: this.state.display.concat(e.target.value),
+                numberTwo: ''
             })
         }
     }
@@ -51,7 +52,7 @@ class Calc extends React.Component {
 				result = this.state.numberOne + this.state.numberTwo;
 			break;
 
-			case '&divide':
+			case '/':
 				result = this.state.numberOne / this.state.numberTwo;
 			break;
 
@@ -65,7 +66,9 @@ class Calc extends React.Component {
 		}
 		this.setState({
             display: result,
-           
+            numberTwo: '',
+            numberOne: '',
+            operation: ''
 		})
 	}
 
@@ -85,7 +88,9 @@ class Calc extends React.Component {
             <section className='calcBody'>
             
                 <div className='displayedNumbers'>
-                {/* {this.state.numberOne} {this.state.operation} {this.state.numberTwo}  */}
+                <span>
+                    {this.state.numberOne} {this.state.operation} {this.state.numberTwo} 
+                </span> 
                 {this.state.display}
                 </div>
                 <div className='buttons'>
@@ -93,7 +98,7 @@ class Calc extends React.Component {
                     <button onClick={this.handleClearClick} className='topBtns'>C</button>
                     <button onClick={this.negateValue}      className='topBtns'>+/-</button>
                     <button onClick={this.percenteValue}    className='topBtns'>%</button>
-                    <button onClick={this.handleOprClick} value={'&divide'} className='oprBtns'>&divide;</button>
+                    <button onClick={this.handleOprClick} value={'/'} className='oprBtns'>&divide;</button>
 
                     <button onClick={this.handleNrClick}  value={'7'} className='nrBtns'>7</button>
                     <button onClick={this.handleNrClick}  value={'8'} className='nrBtns'>8</button>

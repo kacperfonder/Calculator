@@ -49,17 +49,37 @@ button {
     background-color: orange;
     border-radius: 0 0 10px 0;
 } 
+.equalBtn:hover {
+    color: #eceef6;
+    background: orangered;
+}
 .topBtns {
     background-color: #3a3a3a;
     color:  #ffffff;
 }
+.topBtns:hover {
+    color: #eceef6;
+    background:  #333333;
+}
 .oprBtns {
     background-color: orange;
+}
+.oprBtns:hover {
+    color: #eceef6;
+    background: orangered;
 }
 .nrBtns {
     background: #ffffff;
     color:  #333333;
     border: 1px solid black;
+}
+.nrBtns:hover {
+    color: #eceef6;
+    background: #f54166
+}
+span {
+    font-size: 50px;
+    color: #333333;
 }
 
   
