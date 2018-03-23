@@ -6,18 +6,21 @@ class Calc extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            display: '0',
+            display: '',
             operation: '',
             numberOne: null,
             numberTwo: null,
-            result: ''
+            result: '',
+            oprValue: ''
         }
     }
     handleClearClick = (e) => {
         this.setState({
-            display: 0,
-            numberOne: 0,
-            numberTwo: 2
+            display: '',
+            operation: '',
+            result: '',
+            numberOne: '',
+            numberTwo: '',
         })
     }
 
@@ -43,32 +46,35 @@ class Calc extends React.Component {
 		this.state.numberTwo = parseInt(this.state.display);
 
 		switch(this.state.operation) {
-			case 'add':
+			case '+':
 				result = this.state.numberOne + this.state.numberTwo;
 			break;
 
-			case 'div':
+			case '&divide':
 				result = this.state.numberOne / this.state.numberTwo;
 			break;
 
-			case 'multi':
+			case '*':
 				result = this.state.numberOne * this.state.numberTwo;
 			break;
 
-			case 'sub':
+			case '-':
 				result = this.state.numberOne - this.state.numberTwo;
 			break;
 		}
-		console.log(result);
 		this.setState({
 			display: result
 		})
 	}
 
     negateValue = () => {
-      
         this.setState({
             display: this.state.display[0] === '-'  ? this.state.display.substr(1) : '-' + this.state.display
+        })
+    }
+    percenteValue = () => {
+        this.setState({
+            display: this.state.display / 100 
         })
     }
    
@@ -76,33 +82,35 @@ class Calc extends React.Component {
         return (
             <section className='calcBody'>
                 <div className='displayedNumbers'>
-                    {this.state.display}
+                {/* {this.state.numberOne} {this.state.operation} {this.state.numberTwo}  */}
+                {this.state.display}
                 </div>
                 <div className='buttons'>
-                <div className='nrBtn'>
-                    <button onClick={this.handleClearClick}>CE</button>
-                    <button onClick={this.negateValue}>+/-</button>
-                    <button onClick={this.percenteValue}>%</button>
-                    <button onClick={this.handleNrClick} value={'7'}>7</button>
-                    <button onClick={this.handleNrClick} value={'8'}>8</button>
-                    <button onClick={this.handleNrClick} value={'9'}>9</button>
-                    <button onClick={this.handleNrClick} value={'4'}>4</button>
-                    <button onClick={this.handleNrClick} value={'5'}>5</button>
-                    <button onClick={this.handleNrClick} value={'6'}>6</button>
-                    <button onClick={this.handleNrClick} value={'1'}>1</button>
-                    <button onClick={this.handleNrClick} value={'2'}>2</button>
-                    <button onClick={this.handleNrClick} value={'3'}>3</button>
-                    <button onClick={this.handleNrClick} value={'0'} className='zeroBtn'>0</button>
-                    <button onClick={this.handleNrClick} value={"."}>.</button>
-                </div>  
-                <div className='oprBtn'>
-                    <button onClick={this.handleOprClick} value={'div'}>&divide;</button>
-                    <button onClick={this.handleOprClick} value={'multi'}>*</button>
-                    <button onClick={this.handleOprClick} value={'sub'}>-</button>
-                    <button onClick={this.handleOprClick} value={'add'}>+</button>
+                
+                    <button onClick={this.handleClearClick} className='topBtns'>C</button>
+                    <button onClick={this.negateValue}      className='topBtns'>+/-</button>
+                    <button onClick={this.percenteValue}    className='topBtns'>%</button>
+                    <button onClick={this.handleOprClick} value={'&divide'} className='oprBtns'>&divide;</button>
+
+                    <button onClick={this.handleNrClick}  value={'7'} className='nrBtns'>7</button>
+                    <button onClick={this.handleNrClick}  value={'8'} className='nrBtns'>8</button>
+                    <button onClick={this.handleNrClick}  value={'9'} className='nrBtns'>9</button>
+                    <button onClick={this.handleOprClick} value={'*'} className='oprBtns'>*</button>
+
+                    <button onClick={this.handleNrClick}  value={'4'} className='nrBtns'>4</button>
+                    <button onClick={this.handleNrClick}  value={'5'} className='nrBtns'>5</button>
+                    <button onClick={this.handleNrClick}  value={'6'} className='nrBtns'>6</button>
+                    <button onClick={this.handleOprClick} value={'-'} className='oprBtns'>-</button>
+
+                    <button onClick={this.handleNrClick}  value={'1'} className='nrBtns'>1</button>
+                    <button onClick={this.handleNrClick}  value={'2'} className='nrBtns'>2</button>
+                    <button onClick={this.handleNrClick}  value={'3'} className='nrBtns'>3</button>
+                    <button onClick={this.handleOprClick} value={'+'} className='oprBtns'>+</button>
+
+                    <button onClick={this.handleNrClick} value={'0'} className='nrBtns' id='zeroBtn'>0</button>
+                    <button onClick={this.handleNrClick} value={"."} className='nrBtns' id='dot'>.</button>
                     <button onClick={this.performResult} className='equalBtn'>=</button>
-                </div>
-                </div>
+                </div>   
             </section>
 	    )
     }
