@@ -2,5 +2,5 @@
 
 Just calculator, made with react. 
 
-Further steps is to upgrade functionality and make it looks like IOS calc.
+Further steps is to upgrade functionality, add key navgation and improve look.
 
