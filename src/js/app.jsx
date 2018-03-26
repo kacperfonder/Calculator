@@ -14,7 +14,7 @@ class Calc extends React.Component {
             oprValue: ''
         }
     }
-    handleClearClick = (e) => {
+    handleClearClick = () => {
         this.setState({
             display: '',
             operation: '',
@@ -43,7 +43,7 @@ class Calc extends React.Component {
             })
         }
     }
-    performResult = (e) => {
+    performResult = () => {
 		let result;
 		this.state.numberTwo = parseFloat(this.state.display);
 
