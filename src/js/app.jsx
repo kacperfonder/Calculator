@@ -62,7 +62,7 @@ class Calc extends React.Component {
 
 			case '-':
 				result = this.state.numberOne - this.state.numberTwo;
-			break;
+            break;
 		}
 		this.setState({
             display: result,
